@@ -1,13 +1,9 @@
 PHP version
-
-Parse through POST body
-
-Convert epoch time to local time
-
-Make syslog string
-
-Call syslog function
-
+    Parse through POST body
+    Convert epoch time to local time
+    Make syslog string
+    Call syslog function
+    Add debug output
 
 Roadmap:
 Better install instructions
@@ -15,6 +11,7 @@ Better install instructions
     Sizing estimates
 Append directly to file
 Logfile maintenance
+Authentication secret
 
 Perl version
 

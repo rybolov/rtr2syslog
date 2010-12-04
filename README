@@ -2,4 +2,8 @@ rtr2syslog: take Real Time Reporting and write to disk using syslog
 Michael Smith rybolov@ryzhe.ath.cx
 http://www.guerilla-ciso.com
 
+PHP syslog reference:
+http://php.net/manual/en/function.syslog.php
+
+
 
