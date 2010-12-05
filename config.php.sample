@@ -2,15 +2,17 @@
 
 //Secret values.
 //The secondary value is for a "seamless migration" by setting
-//In B4: the values here are what I used for testing.  They're not really secret. =)
+//In B4: the values here are what I used for testing.
+//They're not really secret. =)
+//I generated these by running md5sum on an arbitrary file as a seed.
 $secretmain = "012bfb6136fac0e75cdb0d7ae6bb6967";
 $secretsecondary = "64db4e0295d360f39f46523e274c55e6";
 
 
 //Debug is one of:
 //"off"=no logging
-//"auth"=only log the secret
-//turning on logs every request.  This obviously doubles the IO.
+//"auth"=only log the validation request
+//"body"=log every request as it comes in. This obviously doubles the IO.
 //Note that the entire post is written to log, including any authentication secrets.
 $debug = "off";
 $debugdirectory = "./log";
@@ -21,7 +23,7 @@ $debugdirectory = "./log";
 $mode = "syslog";
 
 
-//For "syslog" mode:
+//-------Begin "syslog" mode-------
 
 //Priority is one of the following:
 //LOG_EMERG 	system is unusable
@@ -54,14 +56,16 @@ $syslogfacility = "LOG_DAEMON";
 //Can be any arbitrary string, use this to differentiate RTR2Syslog logs
 $syslogident = "RTR2Syslog:";
 
+//-------End "syslog" mode-------
 
 
 
-
-//For "direct" mode:
+//-------Begin "direct" mode-------
 
 //"direct" is not set up yet
 $logname = "/var/log/rtr/rtrlog";
+
+//-------End "direct" mode-------
 
 
 ?>

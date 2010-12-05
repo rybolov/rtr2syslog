@@ -1,17 +1,19 @@
 PHP version
-    Parse through POST body
-    Convert epoch time to local time
     Make syslog string
     Call syslog function
-    Add debug output
+    Add debug output--partially done
 
 Roadmap:
 Better install instructions
     Dependencies
     Sizing estimates
-Append directly to file
+direct mode
 Logfile maintenance
-Authentication secret
+
 
 Perl version
 
+Completed:
+    Parse through POST body
+    Convert epoch time to local time--Should keep epoch time in log line
+    Authentication secret--is set via header X-RTR-Secret
