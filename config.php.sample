@@ -1,0 +1,60 @@
+<?php
+
+//Debug is one of:
+//"off"=no logging
+//"auth"=only log the secret
+//turning on logs every request.  This obviously doubles the IO.
+//Note that the entire post is written to log, including any authentication secrets.
+$debug = "off";
+$debugdirectory = "./log";
+
+//"mode" is one of the following:
+//"syslog"=call syslog.  You will need to set up syslog using syslog.conf or similar
+//"direct"=write directly to a file.  This is still in syslog
+$mode = "syslog";
+
+
+//For "syslog" mode:
+
+//Priority is one of the following:
+//LOG_EMERG 	system is unusable
+//LOG_ALERT 	action must be taken immediately
+//LOG_CRIT 	critical conditions
+//LOG_ERR 	error conditions
+//LOG_WARNING 	warning conditions
+//LOG_NOTICE 	normal, but significant, condition
+//LOG_INFO 	informational message
+//LOG_DEBUG 	debug-level message
+//Default is "LOG_NOTICE".
+$syslogpriority = "LOG_ALERT";
+
+//Syslog facility, typically one of:
+//LOG_AUTH 	security/authorization messages (use LOG_AUTHPRIV instead in systems where that constant is defined)
+//LOG_AUTHPRIV 	security/authorization messages (private)
+//LOG_CRON 	clock daemon (cron and at)
+//LOG_DAEMON 	other system daemons
+//LOG_KERN 	kernel messages
+//LOG_LOCAL0 ... LOG_LOCAL7 	reserved for local use, these are not available in Windows
+//LOG_LPR 	line printer subsystem
+//LOG_MAIL 	mail subsystem
+//LOG_NEWS 	USENET news subsystem
+//LOG_SYSLOG 	messages generated internally by syslogd
+//LOG_USER 	generic user-level messages
+//LOG_UUCP 	UUCP subsystem
+$syslogfacility = "LOG_DAEMON";
+
+//Syslog Identity
+//Can be any arbitrary string, use this to differentiate RTR2Syslog logs
+$syslogident = "RTR2Syslog:";
+
+
+
+
+
+//For "direct" mode:
+
+//"direct" is not set up yet
+$logname = "/var/log/rtr/rtrlog";
+
+
+?>
