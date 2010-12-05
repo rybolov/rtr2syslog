@@ -8,7 +8,8 @@ if (!@include 'config.php') {
     die('Config not found.  Please read README.');
 }
 
-
+$postbody = http_get_request_body();
+echo ("$postbody");
 
 
 
@@ -19,7 +20,7 @@ if (!@include 'config.php') {
 //"syslog" mode
 if ($mode == "syslog")
 {
-    //syslog($syslogpriority | LOG_LOCAL1, WAF.' '."Oh Hai Thar");
+    //syslog($syslogpriority | $syslogfacility, $syslogident.': '. $logmessage);
     
 }
 

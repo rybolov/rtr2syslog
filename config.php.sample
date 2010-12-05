@@ -1,5 +1,12 @@
 <?php
 
+//Secret values.
+//The secondary value is for a "seamless migration" by setting
+//In B4: the values here are what I used for testing.  They're not really secret. =)
+$secretmain = "012bfb6136fac0e75cdb0d7ae6bb6967";
+$secretsecondary = "64db4e0295d360f39f46523e274c55e6";
+
+
 //Debug is one of:
 //"off"=no logging
 //"auth"=only log the secret

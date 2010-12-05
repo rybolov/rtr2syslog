@@ -5,5 +5,10 @@ http://www.guerilla-ciso.com
 PHP syslog reference:
 http://php.net/manual/en/function.syslog.php
 
+To install:
+Untar
 
+Configure:
+    cp config.php.sample config.php
+    vi config.php
 

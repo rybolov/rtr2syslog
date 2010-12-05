@@ -1,8 +1,10 @@
 POST /path/script.cgi HTTP/1.1
 HOST: www.hungryfishconsulting.com
+Keep-Alive: 300
 User-Agent: Telnet
-Content-Type: text;
+Content-Type: text/plain
 
+Secret: 012bfb6136fac0e75cdb0d7ae6bb6967
 v 1.0
 W 1236205695.625 lb01_736 127.0.0.1 GET /L/1/16399/10s/labamba.akamai.com/index.html 400 15 1 950012 1 HTTP%20Request%20Smuggling%20Attack. WEB_ATTACK/REQUEST_SMUGGLING - REQUEST_HEADERS:Content-Length
 W 1236205695.629 lb01_736 127.0.0.1 GET /L/1/16399/10s/labamba.akamai.com/index.html 400 16 1 960016 1 Content-Length%20HTTP%20header%20is%20not%20numeric PROTOCOL_VIOLATION/INVALID_HREQ - REQUEST_HEADERS:Content-Length
