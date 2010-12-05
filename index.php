@@ -14,7 +14,7 @@ if (!isset(_SERVER["HTTP_X_RTR_SECRET"]))
 }
 
 //Check that the secret matches.
-if ((_SERVER["HTTP_X_RTR_SECRET"] !== $secretmain) || (_SERVER["HTTP_X_RTR_SECRET"] !== $secretsecondary))
+if (($_SERVER["HTTP_X_RTR_SECRET"] !== $secretmain) || ($_SERVER["HTTP_X_RTR_SECRET"] !== $secretsecondary))
 {
    die('Malformed request.  Authentication secret failed validation.'); 
 }
@@ -30,9 +30,11 @@ $postbody = file('php://input');
 //Step through the file line-by-line
 foreach ($postbody as $linenumber => $logline)
 {
-    if ()
+    if ($debug !== "off")
+    {
     //echo $linenumber;
     //echo ("$logline\r");
+    }
     
     //Check for Version
     if ($linenumber == "0")
