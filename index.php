@@ -8,6 +8,7 @@ if (!@include 'config.php') {
     die('Config not found.  Please read README.');
 }
 
+$headersecret = $_SERVER["HTTP_X_RTR_SECRET"];
 
 //This supposedly works with the PECL HTTP but requires an additional install 
 //$postbody = http_get_request_body();
@@ -32,7 +33,7 @@ if ($debug !== "off")
     elseif ($debug == "auth")
     {
         $selflog = "Request Auth Secret: ";
-        $selflog .= $_SERVER["HTTP_X_RTR_SECRET"];
+        $selflog .= $headersecret;
         $selflog .= "\r";
     }
     elseif ($debug == "body" || "all")
@@ -49,14 +50,14 @@ if ($debug !== "off")
     }
 }
 
-if (!isset($_SERVER["HTTP_X_RTR_SECRET"]))
+if ($headersecret)
 {
    die('Malformed request.  No Authentication secret.');
    //TODO: log that auth has failed.
 }
 
 //Check that the secret matches.
-if (($_SERVER["HTTP_X_RTR_SECRET"] !== $secretmain) || ($_SERVER["HTTP_X_RTR_SECRET"] !== $secretsecondary))
+if (($headersecret !== $secretmain) || ($headersecret !== $secretsecondary))
 {
    die('Malformed request.  Authentication secret failed validation.');
    //TODO: log that auth has failed.
