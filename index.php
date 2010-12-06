@@ -79,7 +79,7 @@ foreach ($postbody as $linenumber => $logline)
     //Check for Version
     if ($linenumber == "0")
     {   //IE, We're at the first line, check to see if the body is valid, starting with this.
-        if ($logline !=="v 1.0")
+        if (preg_match("/^v 1\.0$/", $logline))
         {   //Only v 1.0 has been released.  If further versions are released, this is where we set the logic.
             die('Malformed request.  RTR version number not found.');
         }
