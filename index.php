@@ -83,8 +83,8 @@ foreach ($postbody as $linenumber => $logline)
 {
     if ($debug !== "off")
     {
-        //echo $linenumber;
-        //echo ("$logline\r");
+        echo $linenumber;
+        echo ("$logline\r");
     }
     
     //Check for Version
@@ -99,10 +99,13 @@ foreach ($postbody as $linenumber => $logline)
             $rtrversion = "1.0";
         }
     }
-    //elseif (preg_match("/^W [0-9]{9,15}\.[0-9]{3} [0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3} {GET|POST|PUT|HEAD|TRACE} [\/[a-z,A-z]]* [0-9]{3} [0-9]* [0-9]{1,3} [0-9]{5} [0-1] .*$/", $logline))
-    elseif (preg_match("/^W/", $logline))
+    elseif (preg_match("/^W [0-9]{9,15}\.[0-9]{3} [a-z,A-Z,0-9]{4}_[0-9]{3} [0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3} GET|POST|PUT|HEAD|TRACE (\/([a-z,A-Z,0-9]|\.)*)* [0-9]{3} [0-9]* [0-9]{1,3] [0-9]{5} [0-1] .*$/", $logline))
     {   //IE, it's a well-formed line.  Not convinced that this regex will scale to a high processor load.
         
+    }
+    elseif ($logline = "")
+    {
+        //TODO: log blank line for "errors" debug
     }
     else
     {
