@@ -47,21 +47,32 @@ if ($debug !== "off")
     {
         //log into $debugdirectory
         
+        echo $selflog;
     }
 }
 
-if ($headersecret)
+if (!$headersecret)
 {
    die('Malformed request.  No Authentication secret.');
    //TODO: log that auth has failed.
 }
 
 //Check that the secret matches.
-if (($headersecret !== $secretmain) || ($headersecret !== $secretsecondary))
+//if (($headersecret !== $secretmain) || ($headersecret !== $secretsecondary))
+if ($headersecret == $secretmain)
+{
+   //TODO: log success for debug
+}
+elseif ($headersecret == $secretsecondary)
+{
+   //TODO: log success for debug
+}
+else
 {
    die('Malformed request.  Authentication secret failed validation.');
    //TODO: log that auth has failed.
 }
+
 
 
 
