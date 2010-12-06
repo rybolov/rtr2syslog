@@ -1,15 +1,20 @@
 PHP version
+    Input validation--partly done, need to work through "one regex to rule them all"
     Make syslog string
     Call syslog function
-    Add debug output--partially done
+    Add debug output--started, nowhere done
+    Multiple matches per RTR line
+    Performance in time used per transaction
 
 Roadmap:
 Better install instructions
     Dependencies
     Sizing estimates
-direct mode
-Logfile maintenance
-
+Direct mode
+    Threadsafe writing
+    Logfile maintenance
+        Rotation
+        Zip
 
 Perl version
 

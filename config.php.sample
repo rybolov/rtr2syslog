@@ -12,8 +12,11 @@ $secretsecondary = "64db4e0295d360f39f46523e274c55e6";
 //Debug is one of:
 //"off"=no logging
 //"auth"=only log the validation request
-//"body"=log every request as it comes in. This obviously doubles the IO.
-//Note that the entire post is written to log, including any authentication secrets.
+//"head"= same as "auth" but log the header of each request
+//"body"=same as "head" and log every request as it comes in. This obviously doubles the IO.
+//"all"=same as "body" but also log the checkpoints as the input is parsed.  This tripples the IO
+//"error"=only failed checkpoints.
+//Note that for the authentication secrets is written to the logfile.
 $debug = "off";
 $debugdirectory = "./log";
 
