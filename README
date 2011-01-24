@@ -2,8 +2,7 @@ rtr2syslog: take Real Time Reporting and write to disk using syslog
 Michael Smith rybolov@ryzhe.ath.cx
 http://www.guerilla-ciso.com
 
-PHP syslog reference:
-http://php.net/manual/en/function.syslog.php
+License is MIT Expat.  See LICENSE.
 
 If you have an RTR line that makes errors, send it to me.
 Line elements 5, 11, 12, and 14 have complex regexp and I might have missed some
