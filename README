@@ -5,10 +5,25 @@ http://www.guerilla-ciso.com
 PHP syslog reference:
 http://php.net/manual/en/function.syslog.php
 
+If you have an RTR line that makes errors, send it to me.
+Line elements 5, 11, 12, and 14 have complex regexp and I might have missed some
+valid line characters.
+
 To install:
 Untar
-
 Configure:
     cp config.php.sample config.php
     vi config.php
+For syslog setup:
+    Set $syslogident in config.
+    Add a line to /etc/syslog.conf or comparable, look in syslogconfig.txt for samples
+    
 
+    
+Troubleshooting:
+Use logtest.php to test php => syslog or php => directlogfile config
+Turn on $debugresponse in config.php if you're watching "on the wire"
+Turn on $debug in config.php to "error"
+Debug log: tail -f <debug.log>
+Unfiltered logs: tail -f /var/log/messages
+Filtered logs: tail -f </var/log/rtr2syslog.log>

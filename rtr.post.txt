@@ -101,3 +101,74 @@ W 1236205696.753 lb01_736 127.0.0.1 GET /L/1/16399/10s/labamba.akamai.com/index.
 W 1236205696.757 lb01_736 127.0.0.1 GET /L/1/16399/10s/labamba.akamai.com/crs_error.html 500 26 1 970904 1 IIS%20Information%20Leakage LEAKAGE/ERRORS - RESPONSE_STATUS
 W 1236205696.761 lb01_736 127.0.0.1 GET /L/1/16399/10s/labamba.akamai.com/php_source_leak.html 200 27 1 970902 0 PHP%20source%20code%20leakage LEAKAGE/SOURCE_CODE - RESPONSE_BODY
 --------End POST EXAMPLE--------
+
+
+
+This one is missing a version number.
+--------Begin POST EXAMPLE--------
+POST /rtr2syslog/ HTTP/1.1
+Host: www.hungryfishconsulting.com
+Keep-Alive: 300
+X-RTR-Secret: 012bfb6136fac0e75cdb0d7ae6bb6967
+Content-Type: text/plain
+Content-Length: 1940
+
+W 1236205695.625 lb01_736 127.0.0.1 GET /L/1/16399/10s/labamba.akamai.com/index.html 400 15 1 950012 1 HTTP%20Request%20Smuggling%20Attack. WEB_ATTACK/REQUEST_SMUGGLING - REQUEST_HEADERS:Content-Length
+W 1236205695.629 lb01_736 127.0.0.1 GET /L/1/16399/10s/labamba.akamai.com/index.html 400 16 1 960016 1 Content-Length%20HTTP%20header%20is%20not%20numeric PROTOCOL_VIOLATION/INVALID_HREQ - REQUEST_HEADERS:Content-Length
+W 1236205695.635 lb01_736 127.0.0.1 GET /L/1/16399/10s/labamba.akamai.com/index.html?test_arg=coalesce 200 17 1 950908 0 SQL%20Injection%20Attack WEB_ATTACK/SQL_INJECTION coalesce ARGS:test_arg
+W 1236205695.641 lb01_736 127.0.0.1 GET /L/1/16399/10s/labamba.akamai.com/crs_error.html 500 19 1 970904 1 IIS%20Information%20Leakage LEAKAGE/ERRORS - RESPONSE_STATUS
+W 1236205695.646 lb01_736 127.0.0.1 GET /L/1/16399/10s/labamba.akamai.com/php_source_leak.html 200 20 1 970902 0 PHP%20source%20code%20leakage LEAKAGE/SOURCE_CODE - RESPONSE_BODY
+W 1236205696.745 lb01_736 127.0.0.1 GET /L/1/16399/10s/labamba.akamai.com/index.html 400 22 1 950012 1 HTTP%20Request%20Smuggling%20Attack. WEB_ATTACK/REQUEST_SMUGGLING - REQUEST_HEADERS:Content-Length
+W 1236205696.749 lb01_736 127.0.0.1 GET /L/1/16399/10s/labamba.akamai.com/index.html 400 23 1 960016 1 Content-Length%20HTTP%20header%20is%20not%20numeric PROTOCOL_VIOLATION/INVALID_HREQ - REQUEST_HEADERS:Content-Length
+W 1236205696.753 lb01_736 127.0.0.1 GET /L/1/16399/10s/labamba.akamai.com/index.html?test_arg=coalesce 200 24 1 950908 0 SQL%20Injection%20Attack WEB_ATTACK/SQL_INJECTION coalesce ARGS:test_arg
+W 1236205696.757 lb01_736 127.0.0.1 GET /L/1/16399/10s/labamba.akamai.com/crs_error.html 500 26 1 970904 1 IIS%20Information%20Leakage LEAKAGE/ERRORS - RESPONSE_STATUS
+W 1236205696.761 lb01_736 127.0.0.1 GET /L/1/16399/10s/labamba.akamai.com/php_source_leak.html 200 27 1 970902 0 PHP%20source%20code%20leakage LEAKAGE/SOURCE_CODE - RESPONSE_BODY
+--------End POST EXAMPLE--------
+
+
+This one has malformed lines.
+--------Begin POST EXAMPLE--------
+POST /rtr2syslog/ HTTP/1.1
+Host: www.hungryfishconsulting.com
+Keep-Alive: 300
+X-RTR-Secret: 012bfb6136fac0e75cdb0d7ae6bb6967
+Content-Type: text/plain
+Content-Length: 1980
+
+v 1.0
+W 1236205695.625abc lb01_736 127.0.0.1 GET /L/1/16399/10s/labamba.akamai.com/index.html 400 15 1 950012 1 HTTP%20Request%20Smuggling%20Attack. WEB_ATTACK/REQUEST_SMUGGLING - REQUEST_HEADERS:Content-Length
+W 1236205695.629 lb01_736abc 127.0.0.1 GET /L/1/16399/10s/labamba.akamai.com/index.html 400 16 1 960016 1 Content-Length%20HTTP%20header%20is%20not%20numeric PROTOCOL_VIOLATION/INVALID_HREQ - REQUEST_HEADERS:Content-Length
+W 1236205695.635 lb01_736 127.0.0.1abc GETabc /L/1/16399/10s/labamba.akamai.com/index.html?test_arg=coalesce 200 17 1 950908 0 SQL%20Injection%20Attack WEB_ATTACK/SQL_INJECTION coalesce ARGS:test_arg
+W 1236205695.641 lb01_736 127.0.0.1 GET /L/1/16399/10s/labamba.akamai.com/crs_error.htmlabc 500 19 1 970904 1 IIS%20Information%20Leakage LEAKAGE/ERRORS - RESPONSE_STATUS
+W 1236205695.646 lb01_736 127.0.0.1 GET /L/1/16399/10s/labamba.akamai.com/php_source_leak.htmlabc 200 20 1 970902 0 PHP%20source%20code%20leakage LEAKAGE/SOURCE_CODE - RESPONSE_BODY
+W 1236205696.745 lb01_736 127.0.0.1 GET /L/1/16399/10s/labamba.akamai.com/index.html 400abc 22 1 950012 1 HTTP%20Request%20Smuggling%20Attack. WEB_ATTACK/REQUEST_SMUGGLING - REQUEST_HEADERS:Content-Length
+W 1236205696.749 lb01_736 127.0.0.1 GET /L/1/16399/10s/labamba.akamai.com/index.html 400 23abc 1abc 960016 1 Content-Length%20HTTP%20header%20is%20not%20numeric PROTOCOL_VIOLATION/INVALID_HREQ - REQUEST_HEADERS:Content-Length
+W 1236205696.753 lb01_736 127.0.0.1 GET /L/1/16399/10s/labamba.akamai.com/index.html?test_arg=coalesce 200 24 1 950908abc 0 SQL%20Injection%20Attack WEB_ATTACK/SQL_INJECTION coalesce ARGS:test_arg
+W 1236205696.757 lb01_736 127.0.0.1 GET /L/1/16399/10s/labamba.akamai.com/crs_error.html 500 26 1 970904 1abc IIS%20Information%20Leakage LEAKAGE/ERRORS - RESPONSE_STATUS
+W 1236205696.761 lb01_736 127.0.0.1 GET /L/1/16399/10s/labamba.akamai.com/php_source_leak.html 200 27 1 970902 0 PHP%20source%20code%20leakage LEAKAGE/SOURCE_CODE - RESPONSE_BODY
+--------End POST EXAMPLE--------
+
+
+
+
+One with multiple matches on one log line.  We break this up into individual lines.
+--------Begin POST EXAMPLE--------
+POST /rtr2syslog/ HTTP/1.1
+Host: www.hungryfishconsulting.com
+Keep-Alive: 300
+X-RTR-Secret: 012bfb6136fac0e75cdb0d7ae6bb6967
+Content-Type: text/plain
+Content-Length: 1747
+
+v 1.0
+W 1236205695.625 lb01_736 127.0.0.1 GET /L/1/16399/10s/labamba.akamai.com/index.html 400 15 2 950012 1 HTTP%20Request%20Smuggling%20Attack. WEB_ATTACK/REQUEST_SMUGGLING - REQUEST_HEADERS:Content-Length 960016 1 Content-Length%20HTTP%20header%20is%20not%20numeric PROTOCOL_VIOLATION/INVALID_HREQ - REQUEST_HEADERS:Content-Length
+W 1236205695.635 lb01_736 127.0.0.1 GET /L/1/16399/10s/labamba.akamai.com/index.html?test_arg=coalesce 200 17 2 950908 0 SQL%20Injection%20Attack WEB_ATTACK/SQL_INJECTION coalesce ARGS:test_arg 970904 1 IIS%20Information%20Leakage LEAKAGE/ERRORS - RESPONSE_STATUS
+W 1236205695.646 lb01_736 127.0.0.1 GET /L/1/16399/10s/labamba.akamai.com/php_source_leak.html 200 20 1 970902 0 PHP%20source%20code%20leakage LEAKAGE/SOURCE_CODE - RESPONSE_BODY
+W 1236205696.745 lb01_736 127.0.0.1 GET /L/1/16399/10s/labamba.akamai.com/index.html 400 22 1 950012 1 HTTP%20Request%20Smuggling%20Attack. WEB_ATTACK/REQUEST_SMUGGLING - REQUEST_HEADERS:Content-Length
+W 1236205696.749 lb01_736 127.0.0.1 GET /L/1/16399/10s/labamba.akamai.com/index.html 400 23 1 960016 1 Content-Length%20HTTP%20header%20is%20not%20numeric PROTOCOL_VIOLATION/INVALID_HREQ - REQUEST_HEADERS:Content-Length
+W 1236205696.753 lb01_736 127.0.0.1 GET /L/1/16399/10s/labamba.akamai.com/index.html?test_arg=coalesce 200 24 1 950908 0 SQL%20Injection%20Attack WEB_ATTACK/SQL_INJECTION coalesce ARGS:test_arg
+W 1236205696.757 lb01_736 127.0.0.1 GET /L/1/16399/10s/labamba.akamai.com/crs_error.html 500 26 1 970904 1 IIS%20Information%20Leakage LEAKAGE/ERRORS - RESPONSE_STATUS
+W 1236205696.761 lb01_736 127.0.0.1 GET /L/1/16399/10s/labamba.akamai.com/php_source_leak.html 200 27 1 970902 0 PHP%20source%20code%20leakage LEAKAGE/SOURCE_CODE - RESPONSE_BODY
+--------End POST EXAMPLE--------
+
+

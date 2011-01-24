@@ -1,9 +1,4 @@
 PHP version
-    Input validation--partly done, need to work through "one regex to rule them all"
-    Make syslog string
-    Call syslog function
-    Add debug output--started, nowhere done
-    Multiple matches per RTR line
     Performance in time used per transaction
 
 Roadmap:
@@ -11,10 +6,9 @@ Better install instructions
     Dependencies
     Sizing estimates
 Direct mode
-    Threadsafe writing
     Logfile maintenance
-        Rotation
-        Zip
+    Rotation
+    Zip
 
 Perl version
 
@@ -22,3 +16,11 @@ Completed:
     Parse through POST body
     Convert epoch time to local time--Should keep epoch time in log line
     Authentication secret--is set via header X-RTR-Secret
+    Call syslog function
+    Multiple matches per RTR line
+    Make syslog string
+    Add debug output--started, nowhere done
+    Input validation for each log line element 
+    Direct mode
+        Threadsafe writing
+    

@@ -5,24 +5,33 @@
 //In B4: the values here are what I used for testing.
 //They're not really secret. =)
 //I generated these by running md5sum on an arbitrary file as a seed.
+//Obviously you need to change these before "going live"
 $secretmain = "012bfb6136fac0e75cdb0d7ae6bb6967";
 $secretsecondary = "64db4e0295d360f39f46523e274c55e6";
 
 
 //Debug is one of:
 //"off"=no logging
+//"error"=only failed checkpoints
 //"auth"=only log the validation request
-//"head"= same as "auth" but log the header of each request
-//"body"=same as "head" and log every request as it comes in. This obviously doubles the IO.
-//"all"=same as "body" but also log the checkpoints as the input is parsed.  This tripples the IO
-//"error"=only failed checkpoints.
-//Note that for the authentication secrets is written to the logfile.
+//"head"= same as "auth" and "error" but log the header of each request
+//"body"=same as "head" and "error" and log every request as it comes in. This obviously doubles the IO.
+//"all"=same as "body" and "error" but also log the checkpoints as the input is parsed.  This triples the IO
+
+//Please don't leave this running 24/7 in production
+//Note that for "auth" and above the authentication secrets is written to the debug logfile.
 $debug = "off";
-$debugdirectory = "./log";
+$debuglog = "debug.log";
+
+//Debugresponse is if we want the application to print debug information back to us.
+//Only helpful if we are actually seeing the response, and it increases network use.
+//Turn this on only if you know what you are doing.  =)
+//To turn on, set to "true"
+$debugresponse = "false";
 
 //"mode" is one of the following:
-//"syslog"=call syslog.  You will need to set up syslog using syslog.conf or similar
-//"direct"=write directly to a file.  This is still in syslog
+//"syslog"=call syslog.  You will need to set up syslog using syslog.conf or similar.
+//"direct"=write directly to a file.  The file needs to be writable by the web UserID.
 $mode = "syslog";
 
 
@@ -53,11 +62,14 @@ $syslogpriority = "LOG_ALERT";
 //LOG_SYSLOG 	messages generated internally by syslogd
 //LOG_USER 	generic user-level messages
 //LOG_UUCP 	UUCP subsystem
+//Default is "LOG_DAEMON"
 $syslogfacility = "LOG_DAEMON";
 
 //Syslog Identity
 //Can be any arbitrary string, use this to differentiate RTR2Syslog logs
-$syslogident = "RTR2Syslog:";
+//We use this as the program name
+//Default is "rtr2syslog"
+$syslogident = "rtr2syslog";
 
 //-------End "syslog" mode-------
 
@@ -65,8 +77,8 @@ $syslogident = "RTR2Syslog:";
 
 //-------Begin "direct" mode-------
 
-//"direct" is not set up yet
-$logname = "/var/log/rtr/rtrlog";
+//This does not have any maintenance/rotation scripts yet.
+$logfile = "rtr2syslog.log";
 
 //-------End "direct" mode-------
 

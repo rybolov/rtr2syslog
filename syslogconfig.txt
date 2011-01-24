@@ -1,0 +1,29 @@
+# Config for rsyslogd, this is the standard syslogd on Debian.
+# rsyslogd supports property-based filters which means we can look for messages
+# with $syslogident (set in config.php) in them.
+# Drop this file in /etc/rsyslogd.d/
+# Default is "rtr2syslog"
+# Uncomment to use:
+# :app-name, isequal, "rtr2syslog"	/var/log/rtr2syslog.log
+
+
+
+# Config for syslog-ng.  Completely untested. =)
+#
+# destination d_logfile_rtr2syslog {
+#        file
+#        (
+#        "/var/log/rtr2syslog.log"
+#        template("$ISODATE $HOST $PROGRAM <$FACILITY.$PRIORITY> $MSG\n")
+#        template_escape(yes)
+#        );
+#        };
+#
+# Program name is set by $syslogident in config.php
+# filter f_rtr2syslog { program ("rtr2syslog"); };
+#
+# Assumes you have s_input defined in the config earlier!!!
+# log { source (s_input); filter (f_rtr2syslog); destination (d_logfile_rtr2syslog); };
+
+
+
